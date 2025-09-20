@@ -4,6 +4,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import { OctagonAlertIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import {FaGithub,FaGoogle} from "react-icons/fa";
 import {
     Form,
     FormControl,
@@ -149,12 +150,16 @@ render = {({field}) =>(
                     <span className="bg-card text-muted-foreground relative z-10 px-2">Or Continue With</span>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                 <Button disabled = {pending} variant="outline" type = "button" className="w-full ">Google</Button>
-                     <Button disabled = {pending} variant="outline" type = "button" className="w-full ">Github</Button>
+                 <Button onClick={() => authClient.signIn.social({
+                        provider: "google",
+                     })} disabled = {pending} variant="outline" type = "button" className="w-full "><FaGoogle /></Button>
+                     <Button onClick={() => authClient.signIn.social({
+                        provider: "github",
+                     })} disabled = {pending} variant="outline" type = "button" className="w-full "><FaGithub /></Button>
                 </div>
                 <div className="text-center text-sm">
 Already have an account?{" "}
-<Link href="/sign-in" className="underline underline-offset-4">Sign in</Link>
+<Link href="/sign-in" className="underline underline-offset-4">Sign up</Link>
                 </div>
                     </div>
                     </form>
